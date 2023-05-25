@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mock_test_app:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - mock_db
+      - mock_db_migration
+    env_file:
+      - .env.development
+    command: sh -c "npm run dev"
+    volumes:
+      - type: volume
+        source: mock_test_module_volume
+        target: /app/node_modules
+      - type: bind
+        source: .
+        target: /app
+
+  mock_db_migration:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - mock_db
+    env_file:
+      - .env.development
+    command: sh -c "npm run db:migrate"
+    restart: on-failure
+
+  mock_db:
+    image: postgres:14
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=presidden
+
+volumes:
+  mock_test_module_volume:

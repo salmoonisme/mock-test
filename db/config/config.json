@@ -2,8 +2,8 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "to_do_list",
-    "host": "localhost",
+    "database": "presidden",
+    "host": "mock_db",
     "dialect": "postgres",
     "models-path": "db/models",
     "migrations-path": "db/migrations",
@@ -21,9 +21,9 @@
   },
   "production": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "to_do_list",
-    "host": "database_initial",
+    "password": "kodre9-zinSim-kixpav",
+    "database": "mock-test",
+    "host": "174.138.16.232",
     "dialect": "postgres",
     "models-path": "db/models",
     "migrations-path": "db/migrations",
