@@ -6,13 +6,13 @@ services:
       dockerfile: Dockerfile
       context: .
     ports:
-      - 3000:3000
+      - 3003:3000
     depends_on:
       - mock_db
       - mock_db_migration
     env_file:
-      - .env.development
-    command: sh -c "npm run dev"
+      - .env.production
+    command: sh -c "npm run start"
     volumes:
       - type: volume
         source: mock_test_module_volume
@@ -28,7 +28,7 @@ services:
     depends_on:
       - mock_db
     env_file:
-      - .env.development
+      - .env.production
     command: sh -c "npm run db:migrate"
     restart: on-failure
 
