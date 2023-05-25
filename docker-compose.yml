@@ -11,8 +11,8 @@ services:
       - mock_db
       - mock_db_migration
     env_file:
-      - .env.production
-    command: sh -c "npm run start"
+      - .env.development
+    command: sh -c "npm run start:dev"
     volumes:
       - type: volume
         source: mock_test_module_volume
@@ -28,8 +28,8 @@ services:
     depends_on:
       - mock_db
     env_file:
-      - .env.production
-    command: sh -c "npm run db:migrate:prod"
+      - .env.development
+    command: sh -c "npm run db:migrate"
     restart: on-failure
 
   mock_db:
