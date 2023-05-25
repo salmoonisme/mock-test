@@ -23,7 +23,7 @@
     "username": "postgres",
     "password": "kodre9-zinSim-kixpav",
     "database": "mock-test",
-    "host": "174.138.16.232",
+    "host": "167.71.198.37",
     "dialect": "postgres",
     "models-path": "db/models",
     "migrations-path": "db/migrations",

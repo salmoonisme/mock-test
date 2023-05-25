@@ -29,7 +29,7 @@ services:
       - mock_db
     env_file:
       - .env.production
-    command: sh -c "npm run db:migrate"
+    command: sh -c "npm run db:migrate:prod"
     restart: on-failure
 
   mock_db:
