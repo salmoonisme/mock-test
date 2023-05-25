@@ -38,7 +38,7 @@ services:
       - 5435:5432
     environment:
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=mock-test
+      - POSTGRES_DB=presidden
 
 volumes:
   mock_test_module_volume:
