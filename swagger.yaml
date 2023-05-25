@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: mock-to-do-list
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/home:
+    get:
+      tags:
+        - default
+      summary: get home page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/login:
+    post:
+      tags:
+        - default
+      summary: post login
+      requestBody:
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/user/13:
+    get:
+      tags:
+        - default
+      summary: get user page
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/create/13:
+    post:
+      tags:
+        - default
+      summary: post add list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                list: Memancing
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/delete/13:
+    post:
+      tags:
+        - default
+      summary: delete list
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+              example: '"{\n    \"num\": 4\n}"'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

@@ -1,25 +1,18 @@
+require('dotenv').config({path: `.env.${process.env.NODE_ENV}`})
 const express = require("express");
 const app = express();
-const session = require('express-session')
 const bodyParser = require("body-parser");
 const appRoutes = require("./routes/appRoute");
-const port = 3000;
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const port = process.env.port;
 
 // middleware for route
-app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(
-  session({
-    secret: "keyrahasia",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: true,
-      sameSite: true,
-    },
-  })
-);
+const swaggerDocument = YAML.load('./swagger.yaml');
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.set("view engine", "ejs");
 app.use("/api", appRoutes);
 
 // error handling from next()
