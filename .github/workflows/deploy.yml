@@ -25,8 +25,8 @@ jobs:
           script: |
             cd /root/mock-test
             git fetch --all 
-            git reset --hard origin/main
-            git pull origin main
+            git reset --hard origin/master
+            git pull origin master
             git status
             npm install
             npm run db:migrate:prod
