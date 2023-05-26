@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd ~/mock-test
+            cd ~/root/mock-test
             git fetch --all 
             git reset --hard origin/main
             git pull origin main
