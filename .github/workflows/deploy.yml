@@ -1,0 +1,28 @@
+name: Node.js CI/CD
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd ~/mock-test
+            git fetch --all 
+            git reset --hard origin/main
+            git pull origin main
+            git status
+            npm install --omit=dev
+            npm run db:migrate:prod
+            node run start
