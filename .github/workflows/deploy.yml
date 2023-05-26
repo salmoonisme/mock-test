@@ -2,16 +2,21 @@ name: Node.js CI/CD
 
 on:
   pull_request:
-    branches: [master]
+    branches:
+      - "master"
   push:
-    branches: [master]
+    branches:
+      - "master"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy using ssh
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
