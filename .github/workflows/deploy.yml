@@ -25,4 +25,4 @@ jobs:
             git status
             npm install --omit=dev
             npm run db:migrate:prod
-            node run start
+            npm run start
