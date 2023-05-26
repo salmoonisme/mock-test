@@ -23,11 +23,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd ~/root/mock-test
+            cd /root/mock-test
             git fetch --all 
             git reset --hard origin/main
             git pull origin main
             git status
-            npm install --omit=dev
+            npm install
             npm run db:migrate:prod
             npm run start
