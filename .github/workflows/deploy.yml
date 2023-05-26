@@ -1,35 +1,29 @@
-name: Node.js CI/CD
+name: Deploy Challenge Platinum Project
 
 on:
-  pull_request:
-    branches:
-      - "master"
   push:
     branches:
       - "master"
 
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
-            cd /root/mock-test
-            git fetch --all 
-            git reset --hard origin/master
+            cd ${{ secrets.CHALLENGE_PATH }}
             git pull origin master
-            git status
-            npm install
-            npm run db:migrate:prod
-            npm run start
+            docker compose down
+            docker rmi challengeplatinum-bej7-challengeplatinum:latest
+            docker rmi challengeplatinum-bej7-challengeplatinum_migration:latest
+            docker compose up -d --build
