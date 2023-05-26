@@ -27,7 +27,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/user/13:
+  /api/user/:id:
     get:
       tags:
         - default
@@ -37,7 +37,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/create/13:
+  /api/create/:id:
     post:
       tags:
         - default
@@ -54,7 +54,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/delete/13:
+  /api/delete/:id:
     post:
       tags:
         - default
