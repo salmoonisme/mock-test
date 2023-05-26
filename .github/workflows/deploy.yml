@@ -23,9 +23,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /root/mock-test
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
+            cd /root/mock-test
             git fetch --all 
             git reset --hard origin/master
             git pull origin master
