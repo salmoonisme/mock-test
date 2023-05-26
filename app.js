@@ -2,6 +2,7 @@ require('dotenv').config({path: `.env.${process.env.NODE_ENV}`})
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const server = require('http').createServer(app)
 const appRoutes = require("./routes/appRoute");
 const swaggerUI = require('swagger-ui-express');
 const YAML = require('yamljs');
@@ -30,6 +31,6 @@ app.use((err, req, res, next) => {
 });
 
 // server
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Port running on:${port}`);
 });
